@@ -1,0 +1,9 @@
+{
+  "appId": "net.witrip.teldoo",
+  "appName": "Witrip",
+  "webDir": "dist",
+  "bundledWebRuntime": true,
+  "server": {
+    "androidScheme": "https"
+  }
+}
