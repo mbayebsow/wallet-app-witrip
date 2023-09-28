@@ -1,4 +1,13 @@
 {
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "fullscreen",
+  "scope": "/",
+  "lang": "fr",
+  "start_url": "/",
+  "name": "Witrip",
+  "short_name": "Witrip",
+  "description": "",
   "icons": [
     {
       "src": "assets/icons/icon-48.webp",

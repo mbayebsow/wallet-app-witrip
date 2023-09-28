@@ -21,10 +21,11 @@ import "./theme/variables.css";
 
 /* Pages */
 import HomeScreen from "./screen/home/Home.screen.jsx";
+import LoginScreen from "./screen/home/Login.screen";
+import useLogin from "./hook/useLogin";
 
 setupIonicReact();
 export default function App() {
-  return (
-    <IonNav root={() => <HomeScreen />}></IonNav>
-  );
+  const { islogin } = useLogin();
+  return <IonNav root={() => (islogin ? <HomeScreen /> : <LoginScreen />)}></IonNav>;
 }

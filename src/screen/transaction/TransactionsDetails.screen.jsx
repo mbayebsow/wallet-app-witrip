@@ -1,12 +1,19 @@
-import { IonBackButton, IonButtons, IonContent, IonHeader, IonTitle, IonToolbar } from "@ionic/react";
+import {
+  IonBackButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
 
-function TransactionsDetailsScreen({id}) {
+function TransactionsDetailsScreen({ id }) {
   return (
     <>
-      <IonHeader  className="ion-no-border">
+      <IonHeader className="ion-no-border">
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton text="Retour"></IonBackButton>
+            <IonBackButton text=""></IonBackButton>
           </IonButtons>
           <IonTitle>Reçu transaction</IonTitle>
         </IonToolbar>
@@ -18,7 +25,6 @@ function TransactionsDetailsScreen({id}) {
             <IonTitle size="large">Reçu transaction</IonTitle>
           </IonToolbar>
         </IonHeader>
-
         TransactionsDetailsScreen: {id}
       </IonContent>
     </>
