@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Witrip</string>
+    <string name="title_activity_main">Witrip</string>
+    <string name="package_name">net.witrip.teldoo</string>
+    <string name="custom_url_scheme">net.witrip.teldoo</string>
+</resources>

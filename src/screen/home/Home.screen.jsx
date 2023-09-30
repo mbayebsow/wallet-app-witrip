@@ -1,29 +1,36 @@
-import { IonContent } from "@ionic/react";
+import { IonContent, IonPage } from "@ionic/react";
+import { useState } from "react";
+
 import TransactionsHomeSection from "../../components/TransactionsList.jsx";
 import HomeActionButtons from "../../components/HomeActionButtons.jsx";
 import SoldeSummary from "../../components/SoldeSummary.jsx";
 import CardSoldeSummaryHome from "../../components/CardSoldeSummaryHome.jsx";
-import { useState } from "react";
+import FloatingSolde from "../../components/FloatingSolde.jsx";
 
 function HomeScreen() {
   const [onScrolling, setOnScrolling] = useState(false);
 
   function handleScroll(ev) {
-    //console.log(ev.detail.currentY);
     if (ev.detail.currentY > 1) setOnScrolling(true);
-    if (ev.detail.currentY < 50) setOnScrolling(false);
+    if (ev.detail.currentY < 100) setOnScrolling(false);
   }
 
   return (
-    <>
+    <IonPage>
       <IonContent scrollEvents={true} onIonScroll={handleScroll}>
-        <div className="h-[var(--ion-safe-area-top)] bg-black fixed top-0 left-0 right-0 w-full z-10"></div>
-        <SoldeSummary onScrolling={onScrolling} />
-        <CardSoldeSummaryHome />
-        <HomeActionButtons />
+        <div className="h-[var(--ion-safe-area-top)] w-full bg-white/50 backdrop-blur-lg fixed top-0 z-10" />
+        <div className="mt-[var(--ion-safe-area-top)] p-2 relative">
+          <FloatingSolde onScrolling={onScrolling} />
+
+          <div className="rounded-3xl overflow-hidden bg-black ion-padding ">
+            <SoldeSummary onScrolling={onScrolling} />
+            <CardSoldeSummaryHome />
+            <HomeActionButtons />
+          </div>
+        </div>
         <TransactionsHomeSection />
       </IonContent>
-    </>
+    </IonPage>
   );
 }
 export default HomeScreen;

@@ -1,26 +1,42 @@
-import { CaretLeft } from "@carbon/icons-react";
-import { IonContent } from "@ionic/react";
+import { useEffect } from "react";
+import { IonContent, IonAlert } from "@ionic/react";
+import { Haptics, ImpactStyle } from "@capacitor/haptics";
 
 import useLogin from "../../hook/useLogin";
-import { useEffect, useState } from "react";
+import LoginKeyPad from "../../components/LoginKeyPad";
+import SecretCodeDot from "../../components/SecretCodeDot";
 
 export default function LoginScreen() {
-  const { setIslogins } = useLogin();
-  const [secretCode, setSecretCode] = useState([]);
+  const { secretCode, defaultCode, wrongCode, setIslogins, setWrongCode, setSecretCode } =
+    useLogin();
 
-  //let secretCode = [];
-  const refractCode = (code) => {
-    secretCode.push(code);
-    setSecretCode((prevCode) => [...prevCode, code]);
+  const hapticsImpact = async () => {
+    await Haptics.impact({ style: ImpactStyle.Medium });
   };
 
   useEffect(() => {
-    console.log(secretCode);
-    if (secretCode.length == 4) setIslogins(true);
+    hapticsImpact();
+    if (secretCode.length === 4) {
+      if (secretCode.toString() === defaultCode) {
+        setIslogins(true);
+      } else {
+        setWrongCode(true);
+      }
+    }
   }, [secretCode]);
 
   return (
     <IonContent scrollY={false} fullscreen={true}>
+      <IonAlert
+        isOpen={wrongCode}
+        header="Code incorrect!"
+        message="Vous avec saisi un code secret incorrect. 3 tentative restant"
+        buttons={["OK"]}
+        onDidDismiss={() => {
+          setWrongCode(false);
+          setSecretCode([]);
+        }}
+      />
       <div className="flex flex-col justify-between items-center w-full h-full py-16">
         <div className="h-36 flex justify-center items-center">
           <svg
@@ -40,92 +56,8 @@ export default function LoginScreen() {
         </div>
 
         <div className="w-full">
-          <div className="w-full mb-20">
-            <div className="mx-auto w-fit flex gap-5">
-              <span
-                style={{ background: secretCode.length >= 1 ? "black" : "lightgray" }}
-                className="w-3 h-3 rounded-full border"
-              ></span>
-              <span
-                style={{ backgroundColor: secretCode.length >= 2 ? "black" : "lightgray" }}
-                className="w-3 h-3 rounded-full border"
-              ></span>
-              <span
-                style={{ backgroundColor: secretCode.length >= 3 ? "black" : "lightgray" }}
-                className="w-3 h-3 rounded-full border"
-              ></span>
-              <span
-                style={{ backgroundColor: secretCode.length >= 4 ? "black" : "lightgray" }}
-                className="w-3 h-3 rounded-full border"
-              ></span>
-            </div>
-          </div>
-          <div className="grid grid-flow-row-dense gap-x-[3vw] gap-y-[6vh] grid-cols-3 grid-rows-3 w-4/5 mx-auto">
-            <div
-              onClick={() => setSecretCode((prevCode) => [...prevCode, 1])}
-              className="text-center text-3xl font-black"
-            >
-              1
-            </div>
-            <div
-              onClick={() => setSecretCode((prevCode) => [...prevCode, 2])}
-              className="text-center text-3xl font-black"
-            >
-              2
-            </div>
-            <div
-              onClick={() => setSecretCode((prevCode) => [...prevCode, 3])}
-              className="text-center text-3xl font-black"
-            >
-              3
-            </div>
-            <div
-              onClick={() => setSecretCode((prevCode) => [...prevCode, 4])}
-              className="text-center text-3xl font-black"
-            >
-              4
-            </div>
-            <div
-              onClick={() => setSecretCode((prevCode) => [...prevCode, 5])}
-              className="text-center text-3xl font-black"
-            >
-              5
-            </div>
-            <div
-              onClick={() => setSecretCode((prevCode) => [...prevCode, 6])}
-              className="text-center text-3xl font-black"
-            >
-              6
-            </div>
-            <div
-              onClick={() => setSecretCode((prevCode) => [...prevCode, 7])}
-              className="text-center text-3xl font-black"
-            >
-              7
-            </div>
-            <div
-              onClick={() => setSecretCode((prevCode) => [...prevCode, 8])}
-              className="text-center text-3xl font-black"
-            >
-              8
-            </div>
-            <div
-              onClick={() => setSecretCode((prevCode) => [...prevCode, 9])}
-              className="text-center text-3xl font-black"
-            >
-              9
-            </div>
-            <div className="text-center text-3xl font-black"></div>
-            <div
-              onClick={() => setSecretCode((prevCode) => [...prevCode, 0])}
-              className="text-center text-3xl font-black"
-            >
-              0
-            </div>
-            <div className="flex items-center justify-center font-black">
-              <CaretLeft className="h-8 w-8" />
-            </div>
-          </div>
+          <SecretCodeDot />
+          <LoginKeyPad />
         </div>
       </div>
     </IonContent>

@@ -13,10 +13,14 @@ export default defineConfig({
       workbox: {
         globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
       },
-      includeAssets: ["favicon.ico", "/assets/icons/apple-touch-icon.png", "/assets/icons/mask-icon.svg"],
+      includeAssets: [
+        "favicon.ico",
+        "/assets/icons/apple-touch-icon.png",
+        "/assets/icons/mask-icon.svg",
+      ],
       manifest: {
-        theme_color: "#000000",
-        background_color: "#000000",
+        theme_color: "#ffffff",
+        background_color: "#ffffff",
         display: "standalone",
         scope: "/",
         lang: "fr",

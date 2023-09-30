@@ -5,11 +5,12 @@ import {
   IonHeader,
   IonTitle,
   IonToolbar,
+  IonPage,
 } from "@ionic/react";
 
 function TransactionsDetailsScreen({ id }) {
   return (
-    <>
+    <IonPage>
       <IonHeader className="ion-no-border">
         <IonToolbar>
           <IonButtons slot="start">
@@ -27,7 +28,7 @@ function TransactionsDetailsScreen({ id }) {
         </IonHeader>
         TransactionsDetailsScreen: {id}
       </IonContent>
-    </>
+    </IonPage>
   );
 }
 

@@ -7,17 +7,18 @@ import {
   IonSearchbar,
   IonTitle,
   IonToolbar,
-  IonItem,
   IonItemDivider,
   IonItemGroup,
   IonLabel,
   IonList,
+  IonPage,
 } from "@ionic/react";
+
 import TransactionItem from "../../components/TransactionItem.jsx";
 
 function TransactionsScreen() {
   return (
-    <>
+    <IonPage>
       <IonHeader className="ion-no-border">
         <IonToolbar>
           <IonButtons slot="start">
@@ -69,7 +70,7 @@ function TransactionsScreen() {
           </IonItemGroup>
         </IonList>
       </IonContent>
-    </>
+    </IonPage>
   );
 }
 

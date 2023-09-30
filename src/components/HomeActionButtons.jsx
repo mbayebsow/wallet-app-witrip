@@ -1,32 +1,28 @@
-import { IonNavLink } from "@ionic/react";
 import { DataShare, Download } from "@carbon/icons-react";
-
-import TransfertScreen from "../screen/transfert/Transfert.screen";
+import { IonButton } from "@ionic/react";
 
 function HomeActionButtons() {
   return (
-    <div className="ion-padding bg-black gap-3 fit w-full justify-between  items-center flex">
-      <IonNavLink
+    <div className="bg-[--bg-100] gap-3 fit w-full justify-between  items-center flex">
+      <IonButton
+        routerLink="/paiement"
         routerDirection="forward"
-        component={() => <TransfertScreen />}
-        className="w-full p-0 h-fit m-0"
+        color="light"
+        className="rounded-xl flex items-center w-full"
       >
-        <div className="bg-white text-black rounded-xl flex items-center px-5 py-3 w-full">
-          <Download className="w-6 h-6 mr-3" />
-          Paiement
-        </div>
-      </IonNavLink>
+        <Download className="w-6 h-6 mr-3" />
+        Recevoir
+      </IonButton>
 
-      <IonNavLink
+      <IonButton
+        color="light"
+        routerLink="/transfert"
         routerDirection="forward"
-        component={() => <TransfertScreen />}
-        className="w-full p-0 h-fit m-0"
+        className="rounded-xl flex items-center w-full"
       >
-        <div className="bg-white text-black rounded-xl flex items-center px-5 py-3 w-full">
-          <DataShare className="w-6 h-6 mr-3" />
-          Transfert
-        </div>
-      </IonNavLink>
+        <DataShare className="w-6 h-6 mr-3" />
+        Transfert
+      </IonButton>
     </div>
   );
 }

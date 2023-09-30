@@ -1,20 +1,19 @@
 import React from "react";
 import TransactionItem from "./TransactionItem.jsx";
-import { IonNavLink, IonText } from "@ionic/react";
-import TransactionsScreen from "../screen/transaction/Transactions.screen.jsx";
+import { IonText, IonRouterLink } from "@ionic/react";
+import { ArrowRight } from "@carbon/icons-react";
 
 function TransactionsHomeSection() {
   return (
     <>
       <div className="mx-auto w-full flex justify-between items-center ion-padding">
         <IonText>Transactions reçent</IonText>
-        <IonNavLink
-          className=" text-blue-400"
-          routerDirection="forward"
-          component={() => <TransactionsScreen />}
-        >
-          Voir tout
-        </IonNavLink>
+        <IonRouterLink routerLink="/transactions" routerDirection="forward">
+          <div className="text-xs flex items-center gap-2 w-fit">
+            Voir tout
+            <ArrowRight className="h-3 w-3" />
+          </div>
+        </IonRouterLink>
       </div>
       <div className="w-full flex-col justify-start items-center gap-px inline-flex">
         {Array.from(Array(15).keys()).map((_, i) => (

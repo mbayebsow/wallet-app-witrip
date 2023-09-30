@@ -10,12 +10,13 @@ import {
   IonSelectOption,
   IonInput,
   IonFooter,
+  IonPage,
   IonTitle,
 } from "@ionic/react";
 
 function TransfertScreen() {
   return (
-    <>
+    <IonPage>
       <IonHeader className="ion-no-border">
         <IonToolbar>
           <IonButtons slot="start">
@@ -40,7 +41,8 @@ function TransfertScreen() {
           <div className="w-full m-0 px-3 mb-5 bg-[--ion-card-background] rounded-lg overflow-hidden">
             <IonInput
               type="number"
-              label="Montant a envoyer"
+              inputmode="numeric"
+              label="Montant a transferer"
               labelPlacement="floating"
               placeholder="ex: 10000"
               className=""
@@ -59,9 +61,10 @@ function TransfertScreen() {
               <div className="w-full px-3  bg-[--ion-color-field-background] rounded-lg">
                 <IonInput
                   type="number"
+                  inputmode="numeric"
                   label="Numero de telephone"
                   labelPlacement="floating"
-                  placeholder="Enter text"
+                  placeholder="ex: 70 000 00 00"
                 ></IonInput>
               </div>
             </div>
@@ -81,23 +84,24 @@ function TransfertScreen() {
               <div className="w-full px-3  bg-[--ion-color-field-background] rounded-lg">
                 <IonInput
                   type="number"
+                  inputmode="numeric"
                   label="Numero de telephone"
                   labelPlacement="floating"
-                  placeholder="Enter text"
+                  placeholder="ex: 70 000 00 00"
                 ></IonInput>
               </div>
             </div>
           </div>
         </div>
       </IonContent>
-      <IonFooter className="ion-padding" collapse="fade">
+      <IonFooter className="ion-padding">
         <IonToolbar>
           <IonButton expand="block" size="large" className="rounded-xl overflow-hidden">
             Valider
           </IonButton>
         </IonToolbar>
       </IonFooter>
-    </>
+    </IonPage>
   );
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 
 function CardSoldeSummaryHome() {
   return (
-    <div className="bg-black w-full ion-padding">
+    <div className="bg-[--bg-100] w-full mb-3">
       <div className="self-stretch py-3 px-5 w-full bg-[#ffffff3b] rounded-lg justify-between items-center inline-flex">
         <div className="relative">
           <div className="text-white text-[4vw]">Solde des cartes</div>
