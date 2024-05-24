@@ -59,6 +59,9 @@ export default function LoginScreen() {
           <SecretCodeDot />
           <LoginKeyPad />
         </div>
+        <div>
+          <p>code: 4567</p>
+        </div>
       </div>
     </IonContent>
   );
